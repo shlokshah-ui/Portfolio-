@@ -368,7 +368,7 @@
 
     const phrases = [
       'BS Student @ IIT Madras',
-      'BTech Student @ Scaler',
+      'BTech Student @ NxtWave',
       'Software Developer Intern',
       'AI & Software Engineer',
       'Generative AI Builder',
