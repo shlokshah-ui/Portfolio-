@@ -7,15 +7,7 @@
 
 ---
 
-## 📸 Screenshot
 
-> _Add a screenshot of your portfolio here._
->
-> ```
-> ![Portfolio Screenshot](assets/screenshot.png)
-> ```
-
----
 
 ## 📝 Description
 
@@ -76,32 +68,8 @@ portfolio/
    cd portfolio
    ```
 
-2. **Open in browser**
 
-   Simply open `index.html` in your favourite browser — no build step required!
 
-   ```bash
-   # macOS
-   open index.html
-
-   # Windows
-   start index.html
-
-   # Linux
-   xdg-open index.html
-   ```
-
----
-
-## 🌐 Deployment
-
-### GitHub Pages
-
-1. Go to your repository **Settings** → **Pages**.
-2. Under **Source**, select the branch (e.g., `main`) and folder (`/ (root)`).
-3. Click **Save** — your site will be live at `https://shlokshah-ui.github.io/Portfolio-/`.
-
----
 
 ## 🔗 Links
 
