@@ -425,6 +425,7 @@
     const text   = 'NEVER  GIVING  UP  ✦  NEVER  GIVING  UP  ✦  '
     const radius = 210
     let angle    = 0
+    let spinSpeed = 0.25 // Fast initial spin
 
     const draw = () => {
       ctx.clearRect(0, 0, SIZE, SIZE)
@@ -453,7 +454,13 @@
       }
 
       ctx.restore()
-      angle += 0.015
+      
+      // Decelerate once loaded
+      if (document.body.classList.contains('site-loaded')) {
+        spinSpeed = lerp(spinSpeed, 0.015, 0.02)
+      }
+      
+      angle += spinSpeed
       requestAnimationFrame(draw)
     }
 
@@ -660,8 +667,10 @@
 
     let targetRotateX = 0, targetRotateY = 0
     let targetShiftX = 0, targetShiftY = 0
-    let currentRotateX = 0, currentRotateY = 0
-    let currentShiftX = 0, currentShiftY = 0
+    
+    // Dramatic initial angles and shifts for layered assembly entry
+    let currentRotateX = -45, currentRotateY = 120
+    let currentShiftX = 90, currentShiftY = -70
 
     scene.addEventListener('mousemove', e => {
       const rect = scene.getBoundingClientRect()
@@ -700,10 +709,13 @@
 
     // Smooth lerped loop for organic 60fps movement
     const update = () => {
-      currentRotateX = lerp(currentRotateX, targetRotateX, 0.1)
-      currentRotateY = lerp(currentRotateY, targetRotateY, 0.1)
-      currentShiftX  = lerp(currentShiftX, targetShiftX, 0.1)
-      currentShiftY  = lerp(currentShiftY, targetShiftY, 0.1)
+      // Only animate transitions once page loader fades out
+      if (document.body.classList.contains('site-loaded')) {
+        currentRotateX = lerp(currentRotateX, targetRotateX, 0.07) // slightly slower for premium card weight
+        currentRotateY = lerp(currentRotateY, targetRotateY, 0.07)
+        currentShiftX  = lerp(currentShiftX, targetShiftX, 0.05)   // slower parallax shift for physical depth separation
+        currentShiftY  = lerp(currentShiftY, targetShiftY, 0.05)
+      }
 
       frame.style.transform = `perspective(1000px) rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) scale(1.03)`
       canvas.style.transform = `translate(-50%, -50%) translate3d(${currentShiftX}px, ${currentShiftY}px, -40px)`
