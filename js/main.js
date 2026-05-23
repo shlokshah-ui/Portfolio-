@@ -566,6 +566,7 @@
         if (status) status.textContent = 'READY'
         loader.style.transition = 'opacity 0.4s ease'
         loader.style.opacity = '0'
+        document.body.classList.add('site-loaded')
         setTimeout(() => {
           loader.style.display = 'none'
         }, 400)
@@ -646,6 +647,72 @@
     })
   }
 
+  /* ──────────────────────────────────────────────
+   *  §17  1% TOP UX/UI 3D PARALLAX AVATAR
+   * ────────────────────────────────────────────── */
+
+  const initAvatar3D = () => {
+    const scene = $('.avatar-scene')
+    const frame = $('.avatar-frame')
+    const canvas = $('#ringCanvas')
+    const shine = $('.avatar-shine')
+    if (!scene || !frame || !canvas || !shine) return
+
+    let targetRotateX = 0, targetRotateY = 0
+    let targetShiftX = 0, targetShiftY = 0
+    let currentRotateX = 0, currentRotateY = 0
+    let currentShiftX = 0, currentShiftY = 0
+
+    scene.addEventListener('mousemove', e => {
+      const rect = scene.getBoundingClientRect()
+      const cx = rect.left + rect.width / 2
+      const cy = rect.top + rect.height / 2
+      
+      // Normalized values between -1 and 1
+      const px = (e.clientX - cx) / (rect.width / 2)
+      const py = (e.clientY - cy) / (rect.height / 2)
+      
+      const maxTilt = 18 // 18 degrees max tilt for premium depth feel
+      targetRotateX = -py * maxTilt
+      targetRotateY = px * maxTilt
+      
+      // Shift canvas in opposite direction (parallax)
+      const maxShift = 25 // 25px max shift
+      targetShiftX = -px * maxShift
+      targetShiftY = -py * maxShift
+
+      // Shift the light shine overlay inside the avatar
+      const frameRect = frame.getBoundingClientRect()
+      const percentX = ((e.clientX - frameRect.left) / frameRect.width) * 100
+      const percentY = ((e.clientY - frameRect.top) / frameRect.height) * 100
+      shine.style.setProperty('--shine-x', `${percentX}%`)
+      shine.style.setProperty('--shine-y', `${percentY}%`)
+      shine.style.transform = `translate3d(${-px * 10}px, ${-py * 10}px, 60px)`
+    })
+
+    scene.addEventListener('mouseleave', () => {
+      targetRotateX = 0
+      targetRotateY = 0
+      targetShiftX = 0
+      targetShiftY = 0
+      shine.style.transform = 'translate3d(0, 0, 60px)'
+    })
+
+    // Smooth lerped loop for organic 60fps movement
+    const update = () => {
+      currentRotateX = lerp(currentRotateX, targetRotateX, 0.1)
+      currentRotateY = lerp(currentRotateY, targetRotateY, 0.1)
+      currentShiftX  = lerp(currentShiftX, targetShiftX, 0.1)
+      currentShiftY  = lerp(currentShiftY, targetShiftY, 0.1)
+
+      frame.style.transform = `perspective(1000px) rotateX(${currentRotateX}deg) rotateY(${currentRotateY}deg) scale(1.03)`
+      canvas.style.transform = `translate(-50%, -50%) translate3d(${currentShiftX}px, ${currentShiftY}px, -40px)`
+
+      requestAnimationFrame(update)
+    }
+    requestAnimationFrame(update)
+  }
+
   /* ══════════════════════════════════════════════
    *  BOOT — Initialise everything on DOM ready
    * ══════════════════════════════════════════════ */
@@ -667,6 +734,7 @@
     initConnectForm()   // §14
     initSmoothScroll()  // §15
     initSpotlight()     // §16
+    initAvatar3D()      // §17
   }
 
   if (document.readyState === 'loading') {
