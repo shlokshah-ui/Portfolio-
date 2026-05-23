@@ -77,7 +77,7 @@ portfolio/
 | --- | --- |
 | 🌍 **Live Demo** | [shlokshah-ui.github.io/Portfolio-](https://shlokshah-ui.github.io/Portfolio-/) |
 | 💼 **LinkedIn** | [linkedin.com/in/shlok-shah](https://www.linkedin.com/in/shlok-shah/) |
-| 🐙 **GitHub** | [github.com/shlok-shah](https://github.com/shlok-shah/) |
+| 🐙 **GitHub** | [github.com/shlok-shah](https://github.com/shlokshah-ui) |
 | 🧩 **LeetCode** | [leetcode.com/u/qXRGPxVouZ](https://leetcode.com/u/qXRGPxVouZ/) |
 | 🏆 **Codeforces** | [codeforces.com/profile/Synthos17](https://codeforces.com/profile/Synthos17) |
 
