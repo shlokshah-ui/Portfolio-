@@ -3,7 +3,7 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/placeholder/deploy-status)](https://shlok-shah.netlify.app/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Active-green?style=for-the-badge&logo=github)](https://shlokshah-ui.github.io/Portfolio-/)
 
 ---
 
@@ -95,19 +95,11 @@ portfolio/
 
 ## 🌐 Deployment
 
-### Netlify
-
-1. Push your repository to GitHub.
-2. Go to [Netlify](https://www.netlify.com/) → **Add new site** → **Import an existing project**.
-3. Connect your GitHub repo.
-4. Set **Publish directory** to `/` (root).
-5. Click **Deploy site**.
-
 ### GitHub Pages
 
 1. Go to your repository **Settings** → **Pages**.
 2. Under **Source**, select the branch (e.g., `main`) and folder (`/ (root)`).
-3. Click **Save** — your site will be live at `https://<username>.github.io/portfolio/`.
+3. Click **Save** — your site will be live at `https://shlokshah-ui.github.io/Portfolio-/`.
 
 ---
 
@@ -115,7 +107,7 @@ portfolio/
 
 | | Link |
 | --- | --- |
-| 🌍 **Live Demo** | [shlok-shah.netlify.app](https://shlok-shah.netlify.app/) |
+| 🌍 **Live Demo** | [shlokshah-ui.github.io/Portfolio-](https://shlokshah-ui.github.io/Portfolio-/) |
 | 💼 **LinkedIn** | [linkedin.com/in/shlok-shah](https://www.linkedin.com/in/shlok-shah/) |
 | 🐙 **GitHub** | [github.com/shlok-shah](https://github.com/shlok-shah/) |
 | 🧩 **LeetCode** | [leetcode.com/u/qXRGPxVouZ](https://leetcode.com/u/qXRGPxVouZ/) |
